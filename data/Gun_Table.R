@@ -34,4 +34,6 @@ all_sum_df <- left_join(all_sum_df, summary_sociological_metrics, by = "state")
 View(all_sum_df)
 
 #The final data frame with everything we should be using is `all_sum_df`
-#
+
+write.csv(all_sum_df,"/Users/yenmy/Documents/info201/project/project-itsyenmyvo22/data/all_sum_df.csv", row.names = FALSE)
+
