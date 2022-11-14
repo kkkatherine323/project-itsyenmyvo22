@@ -2,13 +2,14 @@
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
-data <- read.csv("~/info201/projects/project-itsyenmyvo22/data/universal.csv", stringsAsFactors = F)
+data <- read.csv("https://raw.githubusercontent.com/info201b-au2022/project-itsyenmyvo22/main/universal.csv", stringsAsFactors = F)
 View(data)
 guns <- read.csv("https://raw.githubusercontent.com/info201b-au2022/project-itsyenmyvo22/main/data/all_sum_df.csv", stringsAsFactors = F)%>%
   filter(date > '01-01-2017')%>%
   select(state, n_killed)
   
-final_data <- left_join(data, guns, by= "state")
+final_data <- left_join(data, guns, by= "state")%>%
+  mutate(state = tolower(state))
 
 View(final_data)
 
@@ -24,14 +25,7 @@ state_universal <- final_data %>%
 # all data loaded
  
 #finding background check table
- state_univ_thing <- final_data %>%
-   mutate(state = tolower(state))%>%
-   select(universal, state)
 
- 
-
- View(state_univ_thing)
- 
 
  
  #finding deaths
@@ -60,15 +54,15 @@ state_universal <- final_data %>%
  View(coords_killed)
  
  killed <- coords_killed %>%
-   summarise(deaths = deaths/60)
+   summarise(deaths = deaths/1000)
  View(killed)
  
  ##creating the map where it shows gun purchases
   
  state_shape <- map_data("state")%>%
    rename(state=region)%>%
-   left_join(state_univ_thing, by="state")
-
+   left_join(final_data, by="state")
+View(state_shape)
    
 
 ggplot(state_shape)+
@@ -79,7 +73,7 @@ ggplot(state_shape)+
   )+
   coord_map()+
   scale_fill_continuous(low= "Red", high= "Blue")+
-  labs(fill= "age18longgunsale")+ 
+  labs(fill= "universal")+ 
   geom_point(
     data = coords_killed,
     mapping = aes(x = long, y = lat),
