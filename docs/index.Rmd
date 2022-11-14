@@ -1,25 +1,66 @@
 ---
-title: "Your Project Title"
-author: "project team members"
-date: "1/22/2022"
-output: html_document
+title: "index.Rmd"
+author: "Xiaotong(Katherine) Zhang, Yenmy Vo, Natalie Hinds, Kasper Li"
+date: "November 14, 2022"
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library("tidyr")
+library("knitr")
+library("dplyr")
+source("https://raw.githubusercontent.com/kkkatherine323/project-itsyenmyvo22/main/source/summary_information.R")
 ```
 
-## What is this file for?
+
+# **Gun Violence in the US: Project Proposal**
+
+
+## Code Name: waterguns
+
+## _Authors:_
+**Natalie Hinds (Nhinds2@uw.edu)
+ Kasper Li(jiaxul9@uw.edu)
+ Katherine Zhang (Xiaotz7@uw.edu)
+ Yenmy Vo (yenmyvo@uw.edu)**
+
+### INFO-201: Technical Foundations of Informatics - The Information School - University of Washington
+
+November 2022
+
+## Summary Information
+
+```{r, echo=FALSE, message = F, include=FALSE}
+info <- summary_info
+info$deaths_sales_18
+info$deaths_sales_21
+info$max_deaths_state
+info$highest_rate_state
+info$highest_deaths_one_day
+```
+
+We use datasets that are specific to incidents of gun violence, such as the state where the violence occurred, the date it occurred, how many casualties there were, how many areas sold guns to 18+, how many areas sold guns to 21+, and local poverty rates. The dataset we chose includes U.S. gun violence incidents from 2013 to 2018. To demonstrate the main purpose of what our project is studying, we chose to calculate five variables through the dataset that are representative of our research questions. These are the states in the dataset with the highest number of deaths due to gun violence, the states with the highest poverty rates, the highest number of deaths in a day, the number of deaths in areas where guns are sold to people over 18 years old, and the number of deaths in areas where guns are sold to people over 21 years old. The results obtained were `r info$deaths_sales_18` deaths in areas where guns were sold to people over the age of 18 and `r info$deaths_sales_21` deaths in areas where guns were sold to people over the age of 21. The data set showed `r info$highest_deaths_one_day` gun violence deaths in a day, and the state with the highest number of deaths due to gun violence was `r info$max_deaths_state`. In addition, the state with the highest poverty rate was `r info$highest_rate_state`.
+
+
+### Summary Table
+
 
 * This file will eventually become your project report for **P02: Exploratory Data Analysis**. Specifically, you will write rmarkdown to report your exploratory data analysis.
 
-* Please see Canvas for more details.
+```{r pressure, echo=FALSE}
+```
+
 
 ## ACCESSING THE /source DIRECTORY
 ### Example 1: Source some code and run a function
 ```{r}
 # Example 1: Note relative path, which can be read: Up one
-# directory(..), down into source (/source), and 
+# directory(..), down into source (/source), and
 # then "source" an R file (data_access.R)
 source("../source/data_access.R")
 data_access_test()
@@ -31,17 +72,8 @@ data_access_test()
 msg <- data_access_test(" Morgan!")
 ```
 
-> `r msg` Hope you have a good day!! 
+> `r msg` Hope you have a good day!!
 
-## ABOUT THIS FILE: 
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
 
 ## Including Plots
 
