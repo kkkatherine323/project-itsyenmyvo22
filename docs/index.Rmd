@@ -15,6 +15,8 @@ library("tidyr")
 library("knitr")
 library("dplyr")
 source("https://raw.githubusercontent.com/kkkatherine323/project-itsyenmyvo22/main/source/summary_information.R")
+source("https://raw.githubusercontent.com/kkkatherine323/project-itsyenmyvo22/main/data/Gun_Table.R")
+source("https://raw.githubusercontent.com/kkkatherine323/project-itsyenmyvo22/main/data/poverty_nkilled_graph.R")
 ```
 
 
@@ -53,6 +55,7 @@ We use datasets that are specific to incidents of gun violence, such as the stat
 * This file will eventually become your project report for **P02: Exploratory Data Analysis**. Specifically, you will write rmarkdown to report your exploratory data analysis.
 
 ```{r pressure, echo=FALSE}
+all_sum_df
 ```
 
 
