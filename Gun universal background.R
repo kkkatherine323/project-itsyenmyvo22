@@ -58,6 +58,10 @@ View(final_data)
  
  ##creating the map where it shows gun purchases
   
+ color <- c("Red", "Blue")
+ 
+ 
+ 
  state_shape <- map_data("state")%>%
    rename(state=region)%>%
    left_join(data, by="state")
@@ -66,13 +70,13 @@ View(state_shape)
 
 ggplot(state_shape)+
   geom_polygon(
-    mapping = aes(x= long, y=lat, group=group, fill= universal),
+    mapping = aes(x= long, y=lat, group= group , fill= factor(universal)),
     color= "white", 
     size=0.1
   )+
   coord_map()+
-  scale_fill_continuous(low= "Red", high= "Blue")+
-  labs(fill= "universal")+ 
+  scale_fill_manual(labels=c("No Universal Background Check","Universal Background Check")
+                    ,values = color)+
   geom_point(
     data = coords_killed,
     mapping = aes(x = long, y = lat),
